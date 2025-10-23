@@ -1,7 +1,7 @@
 import argparse
 import socket
 import time
-import random  # 必须导入random模块
+import random  
 
 def generate_private_key():
     return random.randint(1, 100)
@@ -37,7 +37,7 @@ def verify_checksum(msg_with_checksum):
     actual_checksum = sum(ord(c) for c in raw_msg[:3]) % 100
     return int(checksum_str) == actual_checksum, raw_msg
 
-# -------------------------- 客户端配置 --------------------------
+
 CRLF = "\r\n"
 END = "END"
 ACK = "ACK"
@@ -74,7 +74,7 @@ def main():
             # 1.3 生成共享密钥
             shared_shift = generate_shared_secret(server_public, client_private)
             print(f"[INFO] 共享密钥（偏移量）：{shared_shift}")
-            # 1.4 响应挑战
+            
             encrypted_challenge = sock.recv(1024).decode()
             challenge = caesar_decrypt(encrypted_challenge, shared_shift)
             sock.sendall(challenge.encode())
