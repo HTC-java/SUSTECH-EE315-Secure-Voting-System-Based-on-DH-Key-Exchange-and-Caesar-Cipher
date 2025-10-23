@@ -1,10 +1,9 @@
 import socket
 import threading
 from collections import defaultdict
-import random  # 必须导入random模块
+import random  
 
 
-# DH密钥交换
 def generate_private_key():
     return random.randint(1, 100)
 
@@ -18,7 +17,6 @@ def generate_shared_secret(their_public_key, private_key, p=23):
     return shared % 26  # 凯撒偏移量限制在0-25
 
 
-# 凯撒加解密
 def caesar_encrypt(text, shift):
     result = ""
     for char in text:
@@ -34,7 +32,6 @@ def caesar_decrypt(text, shift):
     return caesar_encrypt(text, -shift)
 
 
-# 消息校验和
 def add_checksum(msg):
     checksum = sum(ord(c) for c in msg[:3]) % 100
     return f"{checksum:02d}_{msg}"
@@ -47,8 +44,6 @@ def verify_checksum(msg_with_checksum):
     actual_checksum = sum(ord(c) for c in raw_msg[:3]) % 100
     return int(checksum_str) == actual_checksum, raw_msg
 
-
-# -------------------------- 投票系统配置 --------------------------
 CRLF = "\r\n"
 END = "END"
 ACK = "ACK"
@@ -63,7 +58,6 @@ client_connections = []  # 存储客户端连接和对应的共享密钥
 voting_ended = False
 
 
-# -------------------------- 核心逻辑 --------------------------
 def broadcast_results():
     """计算并广播加密的投票结果"""
     with lock:
