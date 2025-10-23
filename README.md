@@ -1,5 +1,5 @@
 # SUSTECH-EE315-Secure-Voting-System-Based-on-DH-Key-Exchange-and-Caesar-Cipher
-~自己下原文件，用的DH握手和凯撒加密，运行用wireshark抓本地loopback找到对应端口，直接follow出TCP的数据流，追踪出来的就是报文，自己改一下截图交了得了~
+~**readme，protocol_spec用ai写的**，自己下原文件，用的DH握手和凯撒加密，运行用wireshark抓本地loopback找到对应端口，直接follow出TCP的数据流，追踪出来的就是报文，自己改一下截图交了得了，基本上都是赶工做的，瑕疵应该不少，但基础拓展都实现了，应付作业应该没问题~
 
 本系统是客户端 - 服务器架构的投票工具，支持安全投票与结果统计，操作简单，无需额外安装依赖。
 一、环境准备
